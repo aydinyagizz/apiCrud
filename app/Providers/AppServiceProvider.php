@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        //ApiCrudServiceProvider::register();
+        // ApiCrudServiceProvider sınıfını statik olmayan şekilde çağırmalısınız
+
+        //$provider = app()->make(\App\Providers\ApiCrudServiceProvider::class);
+        //$provider->register(); // Statik değil, örnek üzerinden çağrılıyor.
     }
 }
