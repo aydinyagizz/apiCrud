@@ -17,7 +17,7 @@ interface ProductInterface
      * @param int $id
      * @return Product|null
      */
-    public function byId(int $id): ?Product;
+    public function productById(int $id): ?Product;
 
     /**
      * @param Product $model

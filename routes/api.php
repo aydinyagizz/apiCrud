@@ -24,6 +24,7 @@ Route::middleware('auth:api')->group(function () {
 
 Route::controller(\App\Http\Controllers\Api\ProductController::class)->group(function (){
     Route::get('/product', 'index')->name('index');
+    Route::get('/product-detail/{id}', 'productById')->name('product.by.id');
     Route::post('/product', 'store')->name('store');
     Route::put('/product/{id}', 'update')->name('update');
     Route::delete('/product/{id}', 'destroy')->name('destroy');

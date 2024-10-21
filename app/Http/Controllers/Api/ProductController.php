@@ -36,6 +36,27 @@ class ProductController extends Controller
 
     }
 
+    public function productById(int $id) : JsonResponse
+    {
+//        return response()->json([
+//            'status' => ResponseCode::SUCCESS->value,
+//            'data' => new ProductResource($this->product->productById($id))
+//        ]);
+
+        $product = $this->product->productById($id);
+        if (!$product) {
+            return response()->json([
+                'status' => ResponseCode::ERROR,
+                'message' => 'Ürün bulunamadı',
+            ], 404);
+        }
+
+        return response()->json([
+            'status' => ResponseCode::SUCCESS,
+            'data' => new ProductResource($product),
+        ], 200);
+    }
+
     /**
      * Store a newly created resource in storage.
      */
