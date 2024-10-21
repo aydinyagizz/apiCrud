@@ -14,6 +14,8 @@ class ApiCrudServiceProvider extends ServiceProvider
     public function register(): void
     {
         app()->bind(ProductInterface::class, ProductRepository::class);
+       // app()->singleton(ProductInterface::class, ProductRepository::class);
+        //singleton bir kez oluşturulur ve onu kullanır
     }
 
     /**
