@@ -15,7 +15,7 @@ class LoginController extends Controller
 {
     public function login(Request $request)
     {
-//        $email = $request->json()->email;
+
         $validator = Validator::make($request->all(), [
             'email' => 'required|email',
             'password' => 'required',
@@ -33,8 +33,7 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
 
             $user = Auth::user();
-//            $userLogin = UserController::where('email', $request->email)->first();
-//            Auth::login($userLogin);
+
             $success['token'] = $user->createToken('Login')->accessToken;
 
 
@@ -65,16 +64,12 @@ class LoginController extends Controller
                 ]);
         }
 
-//        $input = $request->all();
-//        $input['password'] = Hash::make($input['password']);
-       // $user = UserController::create($input);
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
         $success['token'] =  $user->createToken('Login')->accessToken;
-      //  $success['name'] =  $user->name;
 
         return response()->json([
             'success'=> 'UserController register successfully.',
