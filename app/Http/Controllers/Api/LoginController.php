@@ -72,7 +72,7 @@ class LoginController extends Controller
         $success['token'] =  $user->createToken('Login')->accessToken;
 
         return response()->json([
-            'success'=> 'UserController register successfully.',
+            'success'=> 'kullanıcı oluşturuldu.',
             'token' => $success
         ]);
     }
